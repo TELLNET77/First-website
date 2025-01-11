@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Trips & Flights</title>
+    <style>
+        :root {
+            --primary-color: #ffcc00;
+            --secondary-color: #333;
+            --background-color: rgba(0, 0, 0, 0.8);
+            --text-color: white;
+            --hover-color: #e6b800;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        .parallax {
+            background-image: url('./image/3333.webp');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .parallax h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .parallax p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            animation: slideIn 1s ease-in-out 0.5s;
+        }
+        .trips {
+            background-color: var(--background-color);
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 1s;
+        }
+        .trips h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .trips p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 20px; 
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .image-gallery img {
+            width: 100%;
+            max-width: 300px; 
+            height: auto; 
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+            opacity: 0; /
+        }
+        .image-gallery img.visible {
+            opacity: 1; 
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+        .reviews {
+            background-color: var(--secondary-color);
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 1.5s;
+        }
+        .reviews h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .review {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .review:nth-child(1) {
+            animation-delay: 2s;
+        }
+        .review:nth-child(2) {
+            animation-delay: 2.5s;
+        }
+        .review:nth-child(3) {
+            animation-delay: 3s;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px 0;
+            animation: slideUp 1s ease-in-out 2s; 
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .image-gallery {
+                flex-direction: column;
+            }
+            .parallax h1 {
+                font-size: 2rem;
+            }
+            .parallax p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax">
+        <h1>Your Trips & Flights</h1>
+        <p>Explore your travel history and memories!</p>
+    </div>
+    <div class="trips">
+        <h2>Recent Trips</h2>
+        <p>Here are all the trips and flights you've taken:</p>
+        <div class="image-gallery">
+            <img src="./image/1.avif" alt="Trip 1" class="visible">
+            <img src="./image/1trip.webp" alt="Trip 2" class="visible">
+            <img src="./image/2.avif" alt="Trip 3" class="visible">
+            <img src="./image/3.jpg" alt="Trip 4" class="visible">
+            <img src="./image/5.jpg" alt="Trip 6" class="visible">
+            <img src="./image/tt.webp" alt="Trip 7" class="visible">
+            <img src="./image/yy.webp" alt="Trip 8" class="visible">
+        </div>
+    </div>
+    <div class="reviews">
+        <h2>User Reviews</h2>
+        <div class="review">"Had an amazing experience! The flights were smooth and the destinations were breathtaking!" - Alex</div>
+        <div class="review">"I loved every moment of my travels. Can't wait to book my next trip!" - Jamie</div>
+        <div class="review">"The best travel memories are made with friends. Highly recommend!" - Taylor</div>
+        <button class="btn">Share Your Experience</button>
+    </div>
+    <footer>
+        <p>&copy; 2025 Indian Airlines. All rights reserved.</p>
+    </footer>
+</body>
+</html>

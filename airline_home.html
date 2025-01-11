@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Airlines</title>
+    <style>    
+        :root {
+            --color-soft-beige: #F8EDE3;
+            --color-light-sand: #FFF5E4;
+            --color-primary: #ff6f00; 
+            --color-secondary: #ffe0b2;
+            --spacing-small: 8px;
+            --spacing-medium: 16px;
+            --spacing-large: 24px;
+        }
+        body {
+            background-color: var(--color-soft-beige);
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #header {
+            background-color: var(--color-light-sand);
+            color: #4e342e;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        #logo span {
+            font-size: 34px;
+            font-weight: bold;
+        }
+        #logo img {
+            height: 84px;
+            margin-right: 10px;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s ease-in-out forwards; /* Fade in effect */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #logo img:hover {
+            transform: scale(1.1); /* Scale on hover */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        #nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+        #nav-menu a {
+            text-decoration: none;
+            color: #4e342e;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #nav-menu a:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+        }
+        .parallax {
+            height: 100vh;
+            background-image: url('./image/imp-2.webp');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 200px 40px 20px;
+            box-sizing: border-box;
+        }
+        .outer-box {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: var(--spacing-medium) auto;
+            display: flex;
+            flex-direction: column;
+            animation: slideInFromRight 0.5s ease-in-out; 
+        }
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .trip-type {
+            display: flex;
+            gap: 60px;
+        }
+        .trip-type label {
+            font-weight: bold;
+            color: #4e342e;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .form-field {
+            flex: 1 1 18%;
+            max-width: 18%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            transition:background-color 0.4s ease-in-out;
+        }
+        .form-field:hover {
+            font-size : 24px;
+        }
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            font-size: 14px;
+        }
+        .form-field input:hover,
+        .form-field select:hover {
+            border-color: var(--color-primary); 
+            box-shadow: 0 0 5px var(--color-primary);
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button-container button {
+            background-color: var(--color-primary);
+            color : white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: var(--color-secondary);
+            transform: scale(1.1);
+        }
+        .whats-new-section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin: var(--spacing-medium) auto;
+            max-width: 900px;
+            animation: slideUp 0.5s ease-in-out;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .whats-new-section h2 {
+            font-size: 2.4rem;
+            color: #4e342e;
+            margin-bottom: 20px;
+        }
+        .whats-new-section p {
+            font-size: 1.2rem;
+            color: #6d4c41;
+            line-height: 1.6;
+            margin: 0 auto 30px;
+        }
+        .image-gallery {
+            margin-left: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .image-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .form-field {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            .trip-type {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <img src="./image/iii.jpg" alt="Indian Airlines Logo">
+            <span>Indian Airlines</span>
+        </div>
+        <div id="nav-menu">
+            <a href="./login_page.html" target="_blank">Login</a>
+            <a href="./register_page.html" target="_blank">Register</a>
+            <a href="./your_trips.html" target="_blank">My Trips</a>
+        </div>
+    </div>
+    <div class="parallax">
+        <h1>Book Your Dream Trip</h1>
+        <div class="outer-box">
+            <div class="booking-form">
+                <div class="trip-type">
+                    <label><input type="radio" name="trip-type" value="one-way" checked> One Way</label>
+                    <label><input type="radio" name="trip-type" value="round-trip"> Round Trip</label>
+                    <label><input type="radio" name="trip-type" value="multi-city"> Multi City</label>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="from">From</label>
+                        <input type="text" id="from" name="from" placeholder="Enter departure city" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="to">To</label>
+                        <input type="text" id="to" name="to" placeholder="Enter destination city" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="departure">Departure</label>
+                        <input type="date" id="departure" name="departure" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="return">Return</label>
+                        <input type="date" id="return" name="return" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label for="travel">Travellers</label>
+                        <input type="number" id="travel" name="travel" placeholder="No. of travelers" min="1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="class">Class</label>
+                        <select id="class" name="class" required>
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                            <option value="first-class">First Class</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="payment">Payment</label>
+                        <select id="payment" name="payment" required>
+                            <option value="cash">Cash</option>
+                            <option value="credit-card">Credit Card</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="promo">Promo Code</label>
+                        <input type="text" id="promo" name="promo" placeholder="Enter code">
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whats-new-section">
+        <h2>What's New?</h2>
+        <p>Find exclusive offers and the best deals available for you.</p>
+    </div>
+
+    <div class="image-gallery">
+        <img src="./image/An upscale airline offer form promoting a luxury multi-destination trip with iconic landmarks, premium amenities, and a sleek booking button.png" alt="Luxury Multi-Destination">
+        <img src="./image/DALL·E 2025-01-10 21.00.00 - An upscale airline offer form designed for business travelers. The top showcases a sleek image of a business-class cabin with reclining seats and ambi.webp" alt="Business Class Luxury">
+        <img id="one_img" src="./image/ai.webp" alt="AI Airline Visual">
+    </div>
+</body>
+</html>
